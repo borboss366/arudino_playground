@@ -1,6 +1,8 @@
 # arudino_playground
 Arduino playground for our team
 
+## Influx db queries
+SELECT value FROM "sandbox"."autogen"."Temperature";
 
 ## Shishaino
 
