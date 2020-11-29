@@ -1,6 +1,8 @@
 # arudino_playground
 Arduino playground for our team
 
+![](influx_graph.png)
+
 ## Influx db queries
 SELECT value FROM "sandbox"."autogen"."Temperature";
 
