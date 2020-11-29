@@ -1,6 +1,5 @@
 
 import argparse
-from influxdb import InfluxDBClient
 import subprocess
 import psutil
 import socket
@@ -8,6 +7,8 @@ import random
 import time 
 import sys
 import re
+
+from influxdb import InfluxDBClient
 
 ap = argparse.ArgumentParser()
 
