@@ -5,7 +5,7 @@ import psutil
 import socket
 from influxdb import InfluxDBClient
 
-client = InfluxDBClient(host='159.89.17.17', port=8086, database='sandbox')
+client = InfluxDBClient(host='46.101.189.187', port=8086, database='sandbox')
 
 for i in range(10000):
     value = psutil.cpu_percent()
