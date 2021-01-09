@@ -1,18 +1,20 @@
 /*
-* Sensor - DFRobot Capacitive Soil Moisture Sensor v1.0
+* Moisture Sensor - DFRobot Capacitive Soil Moisture Sensor v1.0
+* Light Sensor - Analog Ambient Light Sensor v2.1
 * Relay - Gravity Realy Module v4.0
 */
 
-int SENSOR_PIN = A1;
+int MOISTURE_SENSOR_PIN = A1;
+int LIGHT_SENSOR_PIN = A0;
 int PUMP_PIN = 12;
 
-int SENSOR_AIR_VALUE = 510;
-int SENSOR_WATER_VALUE = 242;  // Filled up to the line
+int MOISTURE_SENSOR_AIR_VALUE = 510;
+int MOISTURE_SENSOR_WATER_VALUE = 242;  // Filled up to the line
 
 int TURN_PUMP_FOR_SEC = 2;
 
-float calcHumidity(int sensorValue) {
-  return (float)(sensorValue - SENSOR_AIR_VALUE) / (float)(SENSOR_WATER_VALUE - SENSOR_AIR_VALUE);
+float calcHumidity(int moistureSensorValue) {
+  return (float)(moistureSensorValue - MOISTURE_SENSOR_AIR_VALUE) / (float)(MOISTURE_SENSOR_WATER_VALUE - MOISTURE_SENSOR_AIR_VALUE);
 }
 
 void turnPumpFor(int ms) {
@@ -34,10 +36,13 @@ void setup() {
 }
 
 void loop() {
-  int sensorValue = analogRead(SENSOR_PIN);
-  float humidity = calcHumidity(sensorValue);
+  int lightSensorValue = analogRead(LIGHT_SENSOR_PIN);
+  int moistureSensorValue = analogRead(MOISTURE_SENSOR_PIN);
+  float humidity = calcHumidity(moistureSensorValue);
+  Serial.print("Light Sensor Value:");
+  Serial.println(lightSensorValue);
   Serial.print("Moisture Sensor Value:");
-  Serial.println(sensorValue);
+  Serial.println(moistureSensorValue);
   Serial.print("Humidity: ");
   Serial.println(humidity);
   if (Serial.available()) {
