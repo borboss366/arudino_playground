@@ -33,8 +33,7 @@ ng6qw4YlOqCTCwhoyASDAN8heGR3/ctqYT2TEbOzLV7VWEEy/bYPv5FBik/xJZ27
 #define WIFI_SSID "111xxx-h368R"
 #define WIFI_PASS "crypto9999"
 
-char server[] = "www.google.com";
-//IPAddress server(192,168,31,76)
+IPAddress server(192,168,31,76);
 
 unsigned long getTime() {
   return WiFi.getTime();
@@ -98,29 +97,32 @@ void setup() {
     delay(10000);
   }
 
-  if (sslClient.connect(server, 443)) {
-    Serial.println("connected to server");
-    // Make a HTTP request:
-    sslClient.println("GET /search?q=arduino HTTP/1.1");
-    sslClient.println("Host: www.google.com");
-    sslClient.println("Connection: close");
-    sslClient.println(); 
-  }
+  Serial.println(sslClient.connect(server, 443));
+//
+//  if (sslClient.connect(server, 443)) {
+//    Serial.println("connected to server");
+//    // Make a HTTP request:
+//    sslClient.println("GET /");
+//    sslClient.println("Connection: close");
+//    sslClient.println(); 
+//  } else {
+//    Serial.println("Connection");
+//  }
 }
 
 void loop() {
   // if the server's disconnected, stop the client:
-  if (!sslClient.connected()) {
-    Serial.println();
-    Serial.println("disconnecting from server.");
-    sslClient.stop();
-
-    // do nothing forevermore:
-    while (true);
-  }
-
-  while (sslClient.available()) {
-    char c = sslClient.read();
-    Serial.write(c);
-  }
+//  if (!sslClient.connected()) {
+//    Serial.println();
+//    Serial.println("disconnecting from server.");
+//    sslClient.stop();
+//
+//    // do nothing forevermore:
+//    while (true);
+//  }
+//
+//  while (sslClient.available()) {
+//    char c = sslClient.read();
+//    Serial.write(c);
+//  }
 }
