@@ -29,5 +29,3 @@ DNS.1 = $NAME # Be sure to include the domain name here because Common Name is n
 EOF
 # Create the signed certificate
 openssl x509 -req -in $NAME.csr -CA myCA.pem -CAkey myCA.key -CAcreateserial -out $NAME.crt -days 825 -sha256 -extfile $NAME.ext
-
-sudo cp 
